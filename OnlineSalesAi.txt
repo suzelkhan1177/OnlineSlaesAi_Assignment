@@ -88,7 +88,7 @@ print(worksheet3_report)
     else:
         lim = n - 20
       
-         #Sercond Bug  fixed
+         # Second Bug  fixed in code
         out = sum(range(1, lim+1))
     print(out)
 
