@@ -1,0 +1,91 @@
+
+Question  - Task-1 SQL
+
+Answer - 1 -
+  SELECT DEPT_NAME, AVG(MONTHLY_SALARY) AS AVG_MONTHLY_SALARY
+  FROM CodingNinja
+  GROUP BY DEPT_NAME
+  ORDER BY AVG_MONTHLY_SALARY DESC
+  LIMIT 3;
+
+-------------------------------------------------------------------------------------------------------------------
+
+Question - Task-2 Scripting
+
+Anser - 2-    
+
+ import csv
+
+def calculate_average(data):
+    total_salary = 0
+    count = 0
+    for row in data:
+        salary = float(row['MONTHLY_SALARY'])
+        total_salary += salary
+        count += 1
+    average_salary = total_salary / count
+    return average_salary
+
+def generate_report(csv_file):
+    with open(csv_file, 'r') as file:
+        reader = csv.DictReader(file)
+        data = list(reader)
+
+        
+        data.sort(key=lambda x: float(x['MONTHLY_SALARY']), reverse=True)
+
+       
+        top_3_departments = data[:3]
+
+        
+        report = "DEPT_NAME AVG_MONTHLY_SALARY (USD)\n"
+        for department in top_3_departments:
+            dept_name = department['DEPT_NAME']
+            avg_salary = calculate_average(data)
+            report += f"{dept_name} {avg_salary:.2f}\n"
+
+        return report
+
+
+worksheet1_file = 'worksheet1.csv'
+worksheet2_file = 'worksheet2.csv'
+worksheet3_file = 'worksheet3.csv'
+
+worksheet1_report = generate_report(worksheet1_file)
+worksheet2_report = generate_report(worksheet2_file)
+worksheet3_report = generate_report(worksheet3_file)
+
+
+print("Report for Worksheet 1:")
+print(worksheet1_report)
+print("Report for Worksheet 2:")
+print(worksheet2_report)
+print("Report for Worksheet 3:")
+print(worksheet3_report)
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+ Question - Task-3 Debugging
+
+ Answer -3-  
+       
+ def compute(n):
+    if n < 10:
+        out = n ** 2
+    elif n < 20:
+        out = 1
+        for i in range(1, n-10+1):
+            out *= i
+    else:
+        lim = n - 20
+        out = sum(range(1, lim+1))
+    print(out)
+
+n = int(input("Enter an integer: "))
+compute(n)
