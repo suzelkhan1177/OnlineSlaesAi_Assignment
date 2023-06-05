@@ -14,7 +14,7 @@ Question - Task-2 Scripting
 
 Anser - 2-    
 
- import csv
+import csv
 
 def calculate_average(data):
     total_salary = 0
@@ -31,13 +31,13 @@ def generate_report(csv_file):
         reader = csv.DictReader(file)
         data = list(reader)
 
-        
+        # Sort data by monthly salary in descending order
         data.sort(key=lambda x: float(x['MONTHLY_SALARY']), reverse=True)
 
-       
+        # Select top 3 departments
         top_3_departments = data[:3]
 
-        
+        # Generate report
         report = "DEPT_NAME AVG_MONTHLY_SALARY (USD)\n"
         for department in top_3_departments:
             dept_name = department['DEPT_NAME']
@@ -46,16 +46,17 @@ def generate_report(csv_file):
 
         return report
 
-
+# Specify the CSV file path for each worksheet
 worksheet1_file = 'worksheet1.csv'
 worksheet2_file = 'worksheet2.csv'
 worksheet3_file = 'worksheet3.csv'
 
+# Generate report for each worksheet
 worksheet1_report = generate_report(worksheet1_file)
 worksheet2_report = generate_report(worksheet2_file)
 worksheet3_report = generate_report(worksheet3_file)
 
-
+# Print the reports
 print("Report for Worksheet 1:")
 print(worksheet1_report)
 print("Report for Worksheet 2:")
